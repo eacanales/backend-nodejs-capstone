@@ -27,6 +27,7 @@ router.get('/', async (req, res, next) => {
     logger.info('/ called');
     try {
         //Step 2: task 1 - insert code here
+        const db = await connectToDatabase();
         //Step 2: task 2 - insert code here
         //Step 2: task 3 - insert code here
         //Step 2: task 4 - insert code here
@@ -41,19 +42,19 @@ router.get('/', async (req, res, next) => {
 });
 
 // Add a new item
-router.post('/', {Step 3: Task 6 insert code here}, async(req, res,next) => {
-    try {
+//router.post('/', {Step 3: Task 6 insert code here}, async(req, res,next) => {
+//    try {
 
         //Step 3: task 1 - insert code here
         //Step 3: task 2 - insert code here
         //Step 3: task 3 - insert code here
         //Step 3: task 4 - insert code here
         //Step 3: task 5 - insert code here
-        res.status(201).json(secondChanceItem.ops[0]);
-    } catch (e) {
-        next(e);
-    }
-});
+//        res.status(201).json(secondChanceItem.ops[0]);
+//    } catch (e) {
+//        next(e);
+//    }
+//});
 
 // Get a single secondChanceItem by ID
 router.get('/:id', async (req, res, next) => {
