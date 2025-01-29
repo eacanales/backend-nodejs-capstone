@@ -49,6 +49,7 @@ router.post('/', upload.single('file'), async(req, res,next) => {
         const db = await connectToDatabase();
         //Step 3: task 2 - insert code here
         const collection = db.collection("secondChanceItems");
+        //const id = req.params.id;
         //Step 3: task 3 - insert code here
         let secondChanceItem = req.body;
         //Step 3: task 4 - insert code here
@@ -94,6 +95,7 @@ router.put('/:id', async(req, res,next) => {
         //Step 5: task 2 - insert code here
         const collection = db.collection("secondChanceItems");
         //Step 5: task 3 - insert code here
+        const id = req.params.id;
         const secondChanceItem = await collection.findOne({ id: id });
         if (!secondChanceItem) {
             logger.error('secondChanceItem not found');
@@ -130,6 +132,7 @@ router.delete('/:id', async(req, res,next) => {
         const db = await connectToDatabase();
         //Step 6: task 2 - insert code here
         const collection = db.collection("secondChanceItems");
+        const id = req.params.id;
         //Step 6: task 3 - insert code here
         const secondChanceItem = await collection.findOne({ id: id });
         if (!secondChanceItem) {
