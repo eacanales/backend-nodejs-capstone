@@ -18,21 +18,21 @@ connectToDatabase().then(() => {
 })
   .catch((e) => console.error('Failed to connect to DB', e))
 
-app.use(express.json());
+app.use(express.json())
 
 // Route files
-const secondChanceItemsRoutes = require('./routes/secondChanceItemsRoutes');
-const authRoutes = require('./routes/authRoutes');
-const searchRoutes = require('./routes/searchRoutes');
-const pinoHttp = require('pino-http');
-const logger = require('./logger');
+const secondChanceItemsRoutes = require('./routes/secondChanceItemsRoutes')
+const authRoutes = require('./routes/authRoutes')
+const searchRoutes = require('./routes/searchRoutes')
+const pinoHttp = require('pino-http')
+const logger = require('./logger')
 
-app.use(pinoHttp({ logger }));
-//app.use(express.static(path.join(__dirname, 'public')));
+app.use(pinoHttp({ logger }))
+// app.use(express.static(path.join(__dirname, 'public')));
 
 // Use Routes
-app.use('/api/secondchance/items', secondChanceItemsRoutes);
-app.use('/api/auth', authRoutes);
+app.use('/api/secondchance/items', secondChanceItemsRoutes)
+app.use('/api/auth', authRoutes)
 app.use('/api/secondchance/search', searchRoutes);
 
 
