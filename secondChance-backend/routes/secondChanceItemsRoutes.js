@@ -31,42 +31,41 @@ router.get('/', async (req, res, next) => {
     // Step 2: task 3 - insert code here
     // Step 2: task 4 - insert code here
 
-    const collection = db.collection('secondChanceItems');
+    const collection = db.collection('secondChanceItems')
     const secondChanceItems = await collection.find({}).toArray()
     res.json(secondChanceItems)
   } catch (e) {
-     logger.console.error('oops something went wrong', e)
-     next(e);
-    }
-});
+    logger.console.error('oops something went wrong', e)
+    next(e)
+  }
+})
 
 // Add a new item
-router.post('/', upload.single('file'), async(req, res,next) => {
-    try {
-
-        //Step 3: task 1 - insert code here
-        const db = await connectToDatabase();
-        //Step 3: task 2 - insert code here
-        const collection = db.collection("secondChanceItems");
-        const lastItemQuery = await collection.find().sort({'id': -1}).limit(1);
-        //const id = req.params.id;
-        //Step 3: task 3 - insert code here
-        let secondChanceItem = req.body;
-        //Step 3: task 4 - insert code here
+router.post('/', upload.single('file'), async(req, res, next) => {
+  try {
+    //Step 3: task 1 - insert code here
+    const db = await connectToDatabase();
+    //Step 3: task 2 - insert code here
+    const collection = db.collection("secondChanceItems");
+    const lastItemQuery = await collection.find().sort({'id': -1}).limit(1);
+    //const id = req.params.id;
+    //Step 3: task 3 - insert code here
+    let secondChanceItem = req.body;
+    //Step 3: task 4 - insert code here
         
-        await lastItemQuery.forEach(item => {
-            secondChanceItem.id = (parseInt(item.id) + 1).toString();
-        });
-        //Step 3: task 5 - insert code here
-        const date_added = Math.floor(new Date().getTime() / 1000);
-        secondChanceItem.date_added = date_added
+    await lastItemQuery.forEach(item => {
+        secondChanceItem.id = (parseInt(item.id) + 1).toString();
+    });
+     //Step 3: task 5 - insert code here
+      const date_added = Math.floor(new Date().getTime() / 1000);
+      secondChanceItem.date_added = date_added
         
-        secondChanceItem = await collection.insertOne(secondChanceItem);
-        console.log(secondChanceItem);
-        res.status(201).json(secondChanceItem);
-    } catch (e) {
-        next(e);
-    }
+      secondChanceItem = await collection.insertOne(secondChanceItem);
+      console.log(secondChanceItem);
+      res.status(201).json(secondChanceItem);
+  } catch (e) {
+    next(e);
+  }
 });
 
 // Get a single secondChanceItem by ID
