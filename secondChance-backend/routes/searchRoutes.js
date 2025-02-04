@@ -1,15 +1,15 @@
-const express = require('express');
-const router = express.Router();
-const connectToDatabase = require('../models/db');
+const express = require('express')
+const router = express.Router()
+const connectToDatabase = require('../models/db')
 
 // Search for gifts
 router.get('/', async (req, res, next) => {
-    try {
-        // Task 1: Connect to MongoDB using connectToDatabase database. Remember to use the await keyword and store the connection in `db`
-        // {{insert code here}}
-        const db = await connectToDatabase();
-        //const collection = db.collection("gifts");
-        const collection = db.collection(process.env.MONGO_COLLECTION);
+  try {
+    // Task 1: Connect to MongoDB using connectToDatabase database. Remember to use the await keyword and store the connection in `db`
+    // {{insert code here}}
+    const db = await connectToDatabase();
+    // const collection = db.collection("gifts");
+    const collection = db.collection(process.env.MONGO_COLLECTION);
 
         // Initialize the query object
         let query = {};
