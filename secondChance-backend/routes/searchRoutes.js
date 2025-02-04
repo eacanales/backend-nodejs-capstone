@@ -24,7 +24,7 @@ router.get('/', async (req, res, next) => {
     if (req.query.category) {
       // {{insert code here}}
       query.category = req.query.category
-      }
+    }
     if (req.query.condition) {
       // {{insert code here}} 
       query.condition = req.query.condition
@@ -35,11 +35,11 @@ router.get('/', async (req, res, next) => {
     }
     // Task 4: Fetch filtered gifts using the find(query) method. Make sure to use await and store the result in the `gifts` constant
     // {{insert code here here}}
-    const gifts = await collection.find(query).toArray();
-    res.json(gifts);
+    const gifts = await collection.find(query).toArray()
+    res.json(gifts)
   } catch (e) {
-    next(e);
-    }
-});
+    next(e)
+  }
+})
 
 module.exports = router;
