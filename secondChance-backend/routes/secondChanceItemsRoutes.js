@@ -87,7 +87,7 @@ router.get('/:id', async (req, res, next) => {
 })
 
 // Update and existing item
-router.put ('/:id', async(req, res, next) => {
+router.put('/:id', async(req, res, next) => {
   try {
     // Step 5: task 1 - insert code here
     const db = await connectToDatabase()
@@ -97,8 +97,8 @@ router.put ('/:id', async(req, res, next) => {
     const id = req.params.id
     const secondChanceItem = await collection.findOne({ id })
     if (!secondChanceItem) {
-        logger.error('secondChanceItem not found');
-        return res.status(404).json({ error: "secondChanceItem not found" });
+      logger.error('secondChanceItem not found')
+      return res.status(404).json({ error: 'secondChanceItem not found' });
     }
         //Step 5: task 4 - insert code here
         secondChanceItem.category = req.body.category;
