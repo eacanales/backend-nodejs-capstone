@@ -51,13 +51,13 @@ router.post('/', upload.single('file'), async (req, res, next) => {
     // const id = req.params.id;
     // Step 3: task 3 - insert code here
     let secondChanceItem = req.body
-    // Step 3: task 4 - insert code here 
+    // Step 3: task 4 - insert code here
     await lastItemQuery.forEach(item => {
       secondChanceItem.id = (parseInt(item.id) + 1).toString()
     })
     // Step 3: task 5 - insert code here
     const dateAdded = Math.floor(new Date().getTime() / 1000)
-    secondChanceItem.date_added = dateAdded  
+    secondChanceItem.date_added = dateAdded;  
     secondChanceItem = await collection.insertOne(secondChanceItem)
     console.log(secondChanceItem)
     res.status(201).json(secondChanceItem)
@@ -141,9 +141,9 @@ router.delete('/:id', async (req, res, next) => {
     // Step 6: task 4 - insert code here
     await collection.deleteOne({ id })
     res.json({ deleted: 'success' })
-} catch (e) {
-  next(e);
+  } catch (e) {
+    next(e)
   }
-});
+})
 
-module.exports = router;
+module.exports = router
