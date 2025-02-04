@@ -105,14 +105,14 @@ router.put('/:id', async (req, res, next) => {
     secondChanceItem.condition = req.body.condition
     secondChanceItem.age_days = req.body.age_days
     secondChanceItem.description = req.body.description
-    secondChanceItem.age_years = Number((secondChanceItem.age_days/365).toFixed(1))
-    secondChanceItem.updatedAt = new Date();
+    secondChanceItem.age_years = Number((secondChanceItem.age_days / 365).toFixed(1))
+    secondChanceItem.updatedAt = new Date()
 
-        const updatepreloveItem = await collection.findOneAndUpdate(
-            { id },
-            { $set: secondChanceItem },
-            { returnDocument: 'after' }
-        );
+    const updatepreloveItem = await collection.findOneAndUpdate(
+        { id },
+        { $set: secondChanceItem },
+        { returnDocument: 'after' }
+    );
         // Step 5: task 5 - insert code here
         if(updatepreloveItem) {
             res.json({"uploaded":"success"});
