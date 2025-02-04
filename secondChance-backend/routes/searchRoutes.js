@@ -28,17 +28,17 @@ router.get('/', async (req, res, next) => {
     if (req.query.condition) {
       // {{insert code here}} 
       query.condition = req.query.condition
-      }
+    }
     if (req.query.age_years) {
       // {{insert code here}}
-      query.age_years = { $lte: parseInt(req.query.age_years) };
-      }
-        // Task 4: Fetch filtered gifts using the find(query) method. Make sure to use await and store the result in the `gifts` constant
-        // {{insert code here here}}
-        const gifts = await collection.find(query).toArray();
-        res.json(gifts);
-    } catch (e) {
-        next(e);
+      query.age_years = { $lte: parseInt(req.query.age_years) }
+    }
+    // Task 4: Fetch filtered gifts using the find(query) method. Make sure to use await and store the result in the `gifts` constant
+    // {{insert code here here}}
+    const gifts = await collection.find(query).toArray();
+    res.json(gifts);
+  } catch (e) {
+    next(e);
     }
 });
 
