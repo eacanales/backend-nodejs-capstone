@@ -41,7 +41,7 @@ router.get('/', async (req, res, next) => {
 })
 
 // Add a new item
-router.post( '/', upload.single('file'), async(req, res, next) => {
+router.post('/', upload.single('file'), async(req, res, next) => {
   try {
     // Step 3: task 1 - insert code here
     const db = await connectToDatabase()
