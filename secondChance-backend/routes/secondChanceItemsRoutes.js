@@ -41,7 +41,7 @@ router.get('/', async (req, res, next) => {
 })
 
 // Add a new item
-router.post('/', upload.single('file'), async(req, res, next) => {
+router.post('/', upload.single('file'), async (req, res, next) => {
   try {
     // Step 3: task 1 - insert code here
     const db = await connectToDatabase()
@@ -87,7 +87,7 @@ router.get('/:id', async (req, res, next) => {
 })
 
 // Update and existing item
-router.put('/:id', async(req, res, next) => {
+router.put('/:id', async (req, res, next) => {
   try {
     // Step 5: task 1 - insert code here
     const db = await connectToDatabase()
@@ -100,13 +100,13 @@ router.put('/:id', async(req, res, next) => {
       logger.error('secondChanceItem not found')
       return res.status(404).json({ error: 'secondChanceItem not found' })
     }
-      // Step 5: task 4 - insert code here
-      secondChanceItem.category = req.body.category;
-      secondChanceItem.condition = req.body.condition;
-      secondChanceItem.age_days = req.body.age_days;
-      secondChanceItem.description = req.body.description;
-      secondChanceItem.age_years = Number((secondChanceItem.age_days/365).toFixed(1));
-      secondChanceItem.updatedAt = new Date();
+    // Step 5: task 4 - insert code here
+    secondChanceItem.category = req.body.category
+    secondChanceItem.condition = req.body.condition
+    secondChanceItem.age_days = req.body.age_days
+    secondChanceItem.description = req.body.description
+    secondChanceItem.age_years = Number((secondChanceItem.age_days/365).toFixed(1))
+    secondChanceItem.updatedAt = new Date();
 
         const updatepreloveItem = await collection.findOneAndUpdate(
             { id },
