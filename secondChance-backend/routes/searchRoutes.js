@@ -12,11 +12,11 @@ router.get('/', async (req, res, next) => {
     const collection = db.collection(process.env.MONGO_COLLECTION)
 
     // Initialize the query object
-    let query = {}
+    const query = {}
 
     // Add the name filter to the query if the name parameter is not empty
     // if (/* {{insert code here}} */) {
-    if (req.query.name && req.query.name.trim() !== '') {    
+    if (req.query.name && req.query.name.trim() !== '') { 
       query.name = { $regex: req.query.name, $options: 'i' } // Using regex for partial match, case-insensitive
     }
 
@@ -26,7 +26,7 @@ router.get('/', async (req, res, next) => {
       query.category = req.query.category
     }
     if (req.query.condition) {
-      // {{insert code here}} 
+      // {{insert code here}}
       query.condition = req.query.condition
     }
     if (req.query.age_years) {
@@ -42,4 +42,4 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-module.exports = router;
+module.exports = router
