@@ -47,17 +47,17 @@ router.post('/', upload.single('file'), async (req, res, next) => {
     const db = await connectToDatabase()
     // Step 3: task 2 - insert code here
     const collection = db.collection('secondChanceItems')
-    const lastItemQuery = await collection.find().sort({ 'id': -1 }).limit(1)
+    const lastItemQuery = await collection.find().sort({ id: -1 }).limit(1)
     // const id = req.params.id;
     // Step 3: task 3 - insert code here
     let secondChanceItem = req.body
-    // Step 3: task 4 - insert code here        
+    // Step 3: task 4 - insert code here     
     await lastItemQuery.forEach(item => {
       secondChanceItem.id = (parseInt(item.id) + 1).toString()
     })
     // Step 3: task 5 - insert code here
     const dateAdded = Math.floor(new Date().getTime() / 1000)
-    secondChanceItem.date_added = dateAdded    
+    secondChanceItem.date_added = dateAdded  
     secondChanceItem = await collection.insertOne(secondChanceItem)
     console.log(secondChanceItem)
     res.status(201).json(secondChanceItem)
@@ -115,13 +115,13 @@ router.put('/:id', async (req, res, next) => {
     )
     // Step 5: task 5 - insert code here
     if (updatepreloveItem) {
-      res.json({ 'uploaded':'success' })
+      res.json({ uploaded:'success' })
     } else {
-      res.json({ 'uploaded':'failed' })
+      res.json({ uploaded:'failed' })
     }
   } catch (e) {
-      next(e);
-    }
+    next(e)
+  }
 })
 
 // Delete an existing item
