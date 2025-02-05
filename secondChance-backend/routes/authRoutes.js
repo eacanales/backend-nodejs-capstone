@@ -50,12 +50,12 @@ router.post('/register', async (req, res) => {
 
     // Create JWT
     const authtoken = jwt.sign(payload, JWT_SECRET)
-    logger.info('User registered successfully');
-    res.json({ authtoken,email });
-    } catch (e) {
-        logger.error(e);
-        return res.status(500).send('Internal server error');
-    }
+    logger.info('User registered successfully')
+    res.json({ authtoken,email })
+  } catch (e) {
+    logger.error(e);
+    return res.status(500).send('Internal server error')
+  }
 });    
 
 // Login Endpoint
