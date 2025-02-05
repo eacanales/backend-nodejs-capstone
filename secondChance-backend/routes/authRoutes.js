@@ -83,7 +83,7 @@ router.post('/login', async (req, res) => {
         }
       }     
       const userName = theUser.firstName
-      const userEmail = theUser.email;   
+      const userEmail = theUser.email   
       // Task 6: Create JWT authentication if passwords match with user._id as Payload.
       const authtoken = jwt.sign(user._id, JWT_SECRET)
       logger.info('User logged in successfully')
@@ -92,7 +92,6 @@ router.post('/login', async (req, res) => {
     } else {
       logger.error('User not found')
       return res.status(404).json({ error: 'User not found' })
-
     }
 
     } catch (e) {
