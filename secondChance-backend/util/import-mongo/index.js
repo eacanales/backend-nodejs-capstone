@@ -1,12 +1,12 @@
 require('dotenv').config()
 const MongoClient = require('mongodb').MongoClient
 const fs = require('fs')
-const path = require('path');
+const path = require('path')
 
 // MongoDB connection URL with authentication options
 const url = `${process.env.MONGO_URL}`
 // const filename = `${__dirname}/secondChanceItems.json`
-const filename = path.join(__dirname, 'secondChanceItems.json');
+const filename = path.join(__dirname, 'secondChanceItems.json')
 const dbName = 'secondChance'
 const collectionName = 'secondChanceItems'
 
