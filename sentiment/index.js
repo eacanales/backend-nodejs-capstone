@@ -53,9 +53,9 @@ app.post('/sentiment', async (req, res) => {
     logger.error(`Error performing sentiment analysis: ${error}`)
     // Task 7: if there is an error, return a HTTP code of 500 and the json {'message': 'Error performing sentiment analysis'}
     res.status(500).json({ message: 'Error performing sentiment analysis' }) // {{insert code here}}
-    }
-});
+  }
+})
 
 app.listen(port, () => {
-  logger.info(`Server running on port ${port}`);
-});
+  logger.info(`Server running on port ${port}`)
+})
