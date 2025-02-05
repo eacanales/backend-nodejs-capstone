@@ -1,25 +1,25 @@
-const express = require('express');
-const bcryptjs = require('bcryptjs');
-const jwt = require('jsonwebtoken');
+const express = require('express')
+const bcryptjs = require('bcryptjs')
+const jwt = require('jsonwebtoken')
 const connectToDatabase = require('../models/db');
-const router = express.Router();
-const dotenv = require('dotenv');
-const pino = require('pino');  // Import Pino logger
-//dotenv.config();
+const router = express.Router()
+const dotenv = require('dotenv')
+const pino = require('pino')  // Import Pino logger
+// dotenv.config();
 
-//Task 1: Use the `body`,`validationResult` from `express-validator` for input validation
+// Task 1: Use the `body`,`validationResult` from `express-validator` for input validation
 const { body, validationResult } = require('express-validator');
 
 const logger = pino();  // Create a Pino logger instance
 
-//Create JWT secret
+// Create JWT secret
 
 dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET;
 
 router.post('/register', async (req, res) => {
     try {
-      //Connect to `secondChance` in MongoDB through `connectToDatabase` in `db.js`.
+      // Connect to `secondChance` in MongoDB through `connectToDatabase` in `db.js`.
       const db = await connectToDatabase();
       const collection = db.collection("users");
       const existingEmail = await collection.findOne({ email: req.body.email });
@@ -48,7 +48,7 @@ router.post('/register', async (req, res) => {
             },
         };
 
-        //Create JWT
+        // Create JWT
         const authtoken = jwt.sign(payload, JWT_SECRET);
         logger.info('User registered successfully');
         res.json({ authtoken,email });
