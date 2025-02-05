@@ -56,7 +56,7 @@ router.post('/register', async (req, res) => {
     logger.error(e)
     return res.status(500).send('Internal server error')
   }
-})    
+})
 
 // Login Endpoint
 router.post('/login', async (req, res) => {
@@ -77,11 +77,11 @@ router.post('/login', async (req, res) => {
         return res.status(404).json({ error: 'Wrong password' })
       }
       // Task 5: Fetch user details from a database.  
-      // const payload = {
-        // user: {
-        // id: theUser._id.toString()
-    // }
-      // }     
+      const payload = {
+       user: {
+       id: theUser._id.toString()
+       }
+      }     
       const userName = theUser.firstName
       const userEmail = theUser.email   
       // Task 6: Create JWT authentication if passwords match with user._id as Payload.
