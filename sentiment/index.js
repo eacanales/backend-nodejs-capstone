@@ -18,14 +18,13 @@ app.use(expressPino)
 // Task 3: create the POST /sentiment analysis
 app.post('/sentiment', async (req, res) => {
 
-    // Task 4: extract the sentence parameter
-    const { sentence } = req.query // {{insert code here}};
+  // Task 4: extract the sentence parameter
+  const { sentence } = req.query // {{insert code here}};
 
-
-    if (!sentence) {
-        logger.error('No sentence provided');
-        return res.status(400).json({ error: 'No sentence provided' });
-    }
+  if (!sentence) {
+    logger.error('No sentence provided')
+    return res.status(400).json({ error: 'No sentence provided' })
+  }
 
     // Initialize the sentiment analyzer with the Natural's PorterStemmer and "English" language
     const Analyzer = natural.SentimentAnalyzer;
