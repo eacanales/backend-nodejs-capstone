@@ -79,7 +79,7 @@ router.post('/login', async (req, res) => {
       // Task 5: Fetch user details from database  
       const payload = {
         user: {
-        id: theUser._id.toString()
+          id: theUser._id.toString()
         }
       }     
       const userName = theUser.firstName
@@ -90,8 +90,8 @@ router.post('/login', async (req, res) => {
       return res.status(200).json({ authtoken, userName, userEmail })   
       // Task 7: Send appropriate message if the user is not found
     } else {
-       logger.error('User not found');
-       return res.status(404).json({ error: "User not found"});
+      logger.error('User not found')
+      return res.status(404).json({ error: "User not found"});
 
     }
 
