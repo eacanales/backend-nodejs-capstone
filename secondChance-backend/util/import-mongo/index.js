@@ -39,12 +39,12 @@ async function loadData () {
     console.error(err)
   } finally {
     // Close the connection
-    await client.close();
+    await client.close()
   }
 }
 
-loadData();
+loadData()
 
 module.exports = {
-    loadData,
-  };
+loadData
+}
