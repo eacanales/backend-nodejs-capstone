@@ -39,19 +39,19 @@ router.post('/register', async (req, res) => {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       password: hash,
-      createdAt: new Date(),
+      createdAt: new Date()
     })
 
     const payload = {
       user: {
-      id: newUser.insertedId,
-      },
-    };
+        id: newUser.insertedId
+      }
+    }
 
-      // Create JWT
-      const authtoken = jwt.sign(payload, JWT_SECRET);
-      logger.info('User registered successfully');
-      res.json({ authtoken,email });
+    // Create JWT
+    const authtoken = jwt.sign(payload, JWT_SECRET)
+    logger.info('User registered successfully');
+    res.json({ authtoken,email });
     } catch (e) {
         logger.error(e);
         return res.status(500).send('Internal server error');
