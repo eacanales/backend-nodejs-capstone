@@ -94,12 +94,11 @@ router.post('/login', async (req, res) => {
       return res.status(404).json({ error: 'User not found' })
     }
 
-    } catch (e) {
-       logger.error(e);
-       return res.status(500).json({ error: 'Internal server error', details: e.message });
-
-    }
-});
+  } catch (e) {
+     logger.error(e)
+     return res.status(500).json({ error: 'Internal server error', details: e.message })
+  }
+})
 
 router.put('/update', async (req, res) => {
     // Task 2: Validate the input using `validationResult` and return an appropriate message if you detect an error
