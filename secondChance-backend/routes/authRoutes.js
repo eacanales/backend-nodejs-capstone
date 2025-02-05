@@ -8,7 +8,7 @@ const pino = require('pino') // Import Pino logger
 // dotenv.config();
 
 // Task 1: Use the `body`,`validationResult` from `express-validator` for input validation
-const { body, validationResult } = require('express-validator')
+const { validationResult } = require('express-validator')
 
 const logger = pino() // Create a Pino logger instance
 
@@ -56,7 +56,7 @@ router.post('/register', async (req, res) => {
     logger.error(e)
     return res.status(500).send('Internal server error')
   }
-})    
+}) // Espace    
 
 // Login Endpoint
 router.post('/login', async (req, res) => {
@@ -77,27 +77,27 @@ router.post('/login', async (req, res) => {
         return res.status(404).json({ error: 'Wrong password' })
       }
 
-      // Task 5: Fetch user details from a database  
-      let payload = {
+      // Task 5: Fetch user details from a database. Espace no permitido  
+      const payload = {
         user: {
-          id: theUser._id.toString(),
-        },
-      };
+          id: theUser._id.toString()
+        }
+      }
         
-            const userName = theUser.firstName;
-            const userEmail = theUser.email;   
-            // Task 6: Create JWT authentication if passwords match with user._id as payload  
+       const userName = theUser.firstName;
+       const userEmail = theUser.email;   
+       // Task 6: Create JWT authentication if passwords match with user._id as payload  
         
-            const authtoken = jwt.sign(user._id, JWT_SECRET);
-            logger.info('User logged in successfully');
-            return res.status(200).json({authtoken, userName, userEmail });
+       const authtoken = jwt.sign(user._id, JWT_SECRET);
+       logger.info('User logged in successfully');
+       return res.status(200).json({authtoken, userName, userEmail });
         
         // Task 7: Send appropriate message if the user is not found 
-        } else {
-            logger.error('User not found');
-            return res.status(404).json({ error: "User not found"});
+      } else {
+         logger.error('User not found');
+         return res.status(404).json({ error: "User not found"});
 
-        }
+      }
 
     } catch (e) {
         logger.error(e);
