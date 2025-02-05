@@ -9,17 +9,17 @@ const natural = require('natural')
 // Task 2: initialize the express server
 const app = express() // {{insert code here}}
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000
 
-app.use(express.json());
-app.use(expressPino);
+app.use(express.json())
+app.use(expressPino)
 
 // Define the sentiment analysis route
 // Task 3: create the POST /sentiment analysis
 app.post('/sentiment', async (req, res) => {
 
     // Task 4: extract the sentence parameter
-    const { sentence } = req.query; //{{insert code here}};
+    const { sentence } = req.query // {{insert code here}};
 
 
     if (!sentence) {
