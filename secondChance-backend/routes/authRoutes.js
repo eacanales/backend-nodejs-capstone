@@ -76,14 +76,14 @@ router.post('/login', async (req, res) => {
         logger.error('Passwords do not match')
         return res.status(404).json({ error: 'Wrong password' })
       }
-      // Task 5: Fetch user details from database  
+      // Task 5: Fetch user details
       const payload = {
         user: {
           id: theUser._id.toString()
         }
       }     
       const userName = theUser.firstName
-      const userEmail = theUser.email   
+      const userEmail = theUser.email;   
       // Task 6: Create JWT authentication if passwords match with user._id as Payload.
       const authtoken = jwt.sign(user._id, JWT_SECRET)
       logger.info('User logged in successfully')
@@ -91,7 +91,7 @@ router.post('/login', async (req, res) => {
       // Task 7: Send appropriate message if the user is not found
     } else {
       logger.error('User not found')
-      return res.status(404).json({ error: "User not found"});
+      return res.status(404).json({ error: 'User not found' })
 
     }
 
