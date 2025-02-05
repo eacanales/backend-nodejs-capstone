@@ -77,12 +77,12 @@ router.post('/login', async (req, res) => {
         return res.status(404).json({ error: 'Wrong password' })
       }
 
-    // Task 5: Fetch user details from a database  
-    let payload = {
-       user: {
-       id: theUser._id.toString(),
-       },
-     };
+      // Task 5: Fetch user details from a database  
+      let payload = {
+        user: {
+          id: theUser._id.toString(),
+        },
+      };
         
             const userName = theUser.firstName;
             const userEmail = theUser.email;   
