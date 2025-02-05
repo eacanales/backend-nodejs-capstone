@@ -72,17 +72,17 @@ router.post('/login', async (req, res) => {
     // Task 4: Check if the password matches the encrypted password and send appropriate message on mismatch
     if (theUser) {
       const result = await bcryptjs.compare(req.body.password, theUser.password)
-      if (!result){
-        logger.error('Passwords do not match');
-        return res.status(404).json({ error: 'Wrong password' });
-    }
+      if (!result) {
+        logger.error('Passwords do not match')
+        return res.status(404).json({ error: 'Wrong password' })
+      }
 
-        // Task 5: Fetch user details from a database  
-            let payload = {
-                user: {
-                    id: theUser._id.toString(),
-                },
-            };
+    // Task 5: Fetch user details from a database  
+    let payload = {
+       user: {
+       id: theUser._id.toString(),
+       },
+     };
         
             const userName = theUser.firstName;
             const userEmail = theUser.email;   
