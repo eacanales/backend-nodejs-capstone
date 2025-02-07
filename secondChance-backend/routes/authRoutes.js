@@ -140,12 +140,10 @@ router.put('/update', async (req, res) => {
     }
     const authtoken = jwt.sign(payload, JWT_SECRET)
     logger.info('User updated successfully')
-
     res.json({ authtoken })  
   } catch (e) {
-    logger.error(error);
-    return res.status(500).send('Internal server error');
+    logger.error('error')
+    return res.status(500).send('Internal server error')
   }
 })
-  
-module.exports = router;
+module.exports = router
