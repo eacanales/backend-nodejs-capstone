@@ -130,12 +130,12 @@ router.put('/update', async (req, res) => {
       { email },
       { $set: existingUser },
       { returnDocument: 'after' }
-    );
+    )
 
     // Task 7: Create JWT authentication with `user._id` as a payload using the secret key from the .env file
     const payload = {
-        user: {
-            id: updatedUser._id.toString(),
+      user: {
+        id: updatedUser._id.toString(),
         },
     };
     
