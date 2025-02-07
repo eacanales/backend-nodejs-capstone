@@ -108,11 +108,10 @@ router.put('/update', async (req, res) => {
   }
   try {
   // Task 3: Check if `email` is present in the header and throw an appropriate error message if it is not present
-    const email = req.headers.email;
-    
+    const email = req.headers.email
     if (!email) {
-      logger.error('Email not found in the request headers');
-      return res.status(400).json({ error: "Email not found in the request headers" });
+      logger.error('Email not found in the request headers')
+      return res.status(400).json({ error: 'Email not found in the request headers' })
     }
     
     // Task 4: Connect to MongoDB
