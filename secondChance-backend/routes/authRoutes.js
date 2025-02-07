@@ -93,7 +93,6 @@ router.post('/login', async (req, res) => {
       logger.error('User not found')
       return res.status(404).json({ error: 'User not found' })
     }
-
   } catch (e) {
     logger.error(e)
     return res.status(500).json({ error: 'Internal server error', details: e.message })
@@ -102,19 +101,19 @@ router.post('/login', async (req, res) => {
 
 router.put('/update', async (req, res) => {
   // Task 2: Validate the input using `validationResult` and return an appropriate message if you detect an error
-  const errors = validationResult(req);
+  const errors = validationResult(req)
   if (!errors.isEmpty()) {
-    logger.error('Validation errors in update request', errors.array());
-    return res.status(400).json({ errors: errors.array() });
+    logger.error('Validation errors in update request', errors.array())
+    return res.status(400).json({ errors: errors.array() })
   }
   try {
   // Task 3: Check if `email` is present in the header and throw an appropriate error message if it is not present
-      const email = req.headers.email;
+    const email = req.headers.email;
     
-      if (!email) {
-          logger.error('Email not found in the request headers');
-          return res.status(400).json({ error: "Email not found in the request headers" });
-      }
+    if (!email) {
+      logger.error('Email not found in the request headers');
+      return res.status(400).json({ error: "Email not found in the request headers" });
+    }
     
     // Task 4: Connect to MongoDB
         const db = await connectToDatabase();
