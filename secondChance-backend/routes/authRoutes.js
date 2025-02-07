@@ -81,13 +81,13 @@ router.post('/login', async (req, res) => {
         user: {
           id: theUser._id.toString()
         }
-      }     
+      }
       const userName = theUser.firstName
-      const userEmail = theUser.email   
+      const userEmail = theUser.email
       // Task 6: Create JWT authentication if passwords match with user._id as Payload.
       const authtoken = jwt.sign(user._id, JWT_SECRET)
       logger.info('User logged in successfully')
-      return res.status(200).json({ authtoken, userName, userEmail })   
+      return res.status(200).json({ authtoken, userName, userEmail })
       // Task 7: Send appropriate message if the user is not found
     } else {
       logger.error('User not found')
@@ -117,8 +117,8 @@ router.put('/update', async (req, res) => {
     const db = await connectToDatabase()
     const collection = db.collection('users')
 
-    // Task 5: Find the user credentials in database
-    const existingUser = await collection.findOne({ email })      
+    // Task 5: Find the user credentials in database\
+    const existingUser = await collection.findOne({ email })
     if (!existingUser) {
       logger.error('User not found')
       return res.status(404).json({ error: 'User not found' })
@@ -137,10 +137,9 @@ router.put('/update', async (req, res) => {
       user: {
         id: updatedUser._id.toString()
       }
-    };
-    
-    const authtoken = jwt.sign(payload, JWT_SECRET);
-        logger.info('User updated successfully');
+    }
+    const authtoken = jwt.sign(payload, JWT_SECRET)
+    logger.info('User updated successfully');
 
     res.json({authtoken});
     
