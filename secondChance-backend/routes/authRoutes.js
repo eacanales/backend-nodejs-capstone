@@ -124,7 +124,7 @@ router.put('/update', async (req, res) => {
       return res.status(404).json({ error: 'User not found' })
     }
     existingUser.firstName = req.body.name
-    existingUser.updatedAt = new Date()  
+    existingUser.updatedAt = new Date()
     // Task 6: Update the user credentials in the database
     const updatedUser = await collection.findOneAndUpdate(
       { email },
@@ -135,8 +135,8 @@ router.put('/update', async (req, res) => {
     // Task 7: Create JWT authentication with `user._id` as a payload using the secret key from the .env file
     const payload = {
       user: {
-        id: updatedUser._id.toString(),
-        },
+        id: updatedUser._id.toString()
+      }
     };
     
     const authtoken = jwt.sign(payload, JWT_SECRET);
